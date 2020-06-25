@@ -1,0 +1,58 @@
+// ================================
+// カラー
+// ================================
+$color_white: #fafafa;
+$color_black: #333;
+// ================================
+// ブレイクポイント
+// ================================
+$bp_XXL: 1600px;
+$bp_XL: 1024px;
+$bp_L: 768px;
+$bp_M: 640px;
+$bp_S: 420px;
+$bp_XS: 320px;
+@media only screen and (max-width: $bp_S) {
+}
+// ================================
+// リセット
+// ================================
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+p {
+  margin-bottom: 1em;
+}
+// ================================
+// ベース
+// ================================
+body {
+  color: $color_black;
+  background: $color_white;
+  a {
+    color: $color_black;
+    text-decoration: none;
+    transition: 0.3s;
+    &:link,
+    &:hover,
+    &:active,
+    &:focus {
+      color: $color_black;
+    }
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+}
