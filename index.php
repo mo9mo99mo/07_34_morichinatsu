@@ -1,4 +1,4 @@
-<!--git-hub branch用test  -->
+<!--git-hub branch用test2  -->
 
 <!doctype html>
 <html lang="ja">
