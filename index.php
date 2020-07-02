@@ -1,5 +1,3 @@
-<!--git-hub branch用test2  -->
-
 <!doctype html>
 <html lang="ja">
 
@@ -15,47 +13,30 @@
 
 <body>
     <header>
-        <h1>投稿画面</h1>
+        <h1>ユーザー登録画面</h1>
     </header>
     <section id="form_block">
-        <?php if (isset($error)) : ?>
-            <p class="error"><?= h($error); ?></p>
-        <?php endif; ?>
-        <!-- 画像ファイルアップロードにはformタグにenctype="multipart/form-data"を追加 -->
-        <form action="insert.php" method="post" onsubmit="return chk(this)" id="form" enctype="multipart/form-data">
-            <!-- 画像アップロード -->
+        <form action="insert.php" method="post" onsubmit="return chk(this)" id="form">
             <div class="form_1colmun">
                 <div class="form_input">
-                    <input id="img_file" type="file" name="img_file" placeholder="画像ファイルを選択">
-                    <span id="img_error" class="error_msg"></span>
-                </div>
-            </div><!-- /画像アップロード -->
-            <div class="form_1colmun">
-                <div class="form_input">
-                    <input type="date" name="hizuke" id="hizuke">
-                    <span id="date_error" class="error_msg"></span>
+                    <input type="text" name="user_name" id="user_name" placeholder="ユーザーネーム">
+                    <span id="username_error" class="error_msg"></span>
                 </div>
             </div>
             <div class="form_1colmun">
                 <div class="form_input">
-                    <input id="ttl" type="text" name="title" placeholder="タイトルを入力">
-                    <span id="ttl_error" class="error_msg"></span>
-                </div>
-            </div>
-            <div class="form_1colmun">
-                <div class="form_input">
-                    <input id="honbun" type="text" name="honbun" placeholder="メモ・説明を入力">
-                    <span id="honbun_error" class="error_msg"></span>
+                    <input id="psw" type="text" name="psw" placeholder="パスワード">
+                    <span id="pw_error" class="error_msg"></span>
                 </div>
             </div>
             <div class="form_btn">
-                <button id="post" type="submit" name="upload" class="btn" value="投稿">投稿</button>
+                <button id="post" type="submit" name="entry" class="btn" value="新規会員登録">新規会員登録</button>
             </div>
         </form>
     </section>
-    <footer>
+    <!-- <footer>
         <a href="select.php" class="btn">投稿一覧をみる</a>
-    </footer>
+    </footer> -->
 </body>
 
 </html>

@@ -15,7 +15,7 @@ $id = $_GET['id'];
 
 // DB接続
 $pdo = connect_db();
-$sql = 'SELECT * FROM 06kadai_table WHERE id=:id';
+$sql = 'SELECT * FROM users_table WHERE id=:id';
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(':id', $id, PDO::PARAM_INT);
 $status = $stmt->execute();
@@ -57,47 +57,30 @@ if ($status == false) {
 
 <body>
     <header>
-        <h1>編集画面</h1>
+        <h1>編集画面（管理者用）</h1>
     </header>
     <section id="form_block">
-        <?php if (isset($error)) : ?>
-            <p class="error"><?= h($error); ?></p>
-        <?php endif; ?>
-        <!-- 画像ファイルアップロードにはformタグにenctype="multipart/form-data"を追加 -->
-        <form action="update.php" method="post" onsubmit="return chk(this)" id="form" enctype="multipart/form-data">
-            <!-- 画像アップロード
+        <form action="update.php" method="post" onsubmit="return chk(this)" id="form">
             <div class="form_1colmun">
                 <div class="form_input">
-                    <input id="img_file" type="file" name="img_file" value="<?= $record["img_file"] ?>">
-                    <span id="img_error" class="error_msg"></span>
-                </div>
-            </div>/画像アップロード -->
-            <div class="form_1colmun">
-                <div class="form_input">
-                    <input type="date" name="hizuke" id="hizuke" value="<?= $record["hizuke"] ?>">
-                    <span id="date_error" class="error_msg"></span>
+                    <input id="user_name" type="text" name="user_name" value="<?= $record["username"] ?>">
+                    <span id="username_error" class="error_msg"></span>
                 </div>
             </div>
             <div class="form_1colmun">
                 <div class="form_input">
-                    <input id="ttl" type="text" name="title" value="<?= $record["title"] ?>">
-                    <span id=" ttl_error" class="error_msg"></span>
-                </div>
-            </div>
-            <div class="form_1colmun">
-                <div class="form_input">
-                    <input id="honbun" type="text" name="honbun" value="<?= $record["honbun"] ?>">
-                    <span id="honbun_error" class="error_msg"></span>
+                    <input id="psw" type="text" name="psw" value="<?= $record["password"] ?>">
+                    <span id="pw_error" class="error_msg"></span>
                 </div>
             </div>
             <div class="form_btn">
-                <button id="post" type="submit" name="upload" class="btn" value="投稿">投稿</button>
+                <button id="post" type="submit" name="upload" class="btn" value="投稿">登録内容を変更</button>
             </div>
             <input type="hidden" name="id" value="<?= $record['id'] ?>">
         </form>
     </section>
     <footer>
-        <a href="select.php" class="btn">投稿一覧をみる</a>
+        <a href="select.php" class="btn">ユーザー一覧をみる</a>
     </footer>
 </body>
 

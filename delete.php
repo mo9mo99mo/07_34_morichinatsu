@@ -16,7 +16,7 @@ $id = $_GET['id'];
 $pdo = connect_db();
 
 // DELETE文を作成&実行
-$sql = "DELETE FROM 06kadai_table WHERE id=:id";
+$sql = "DELETE FROM users_table WHERE id=:id";
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(':id', $id, PDO::PARAM_INT);
 $status = $stmt->execute();

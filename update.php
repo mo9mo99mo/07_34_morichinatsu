@@ -4,36 +4,33 @@
 // var_dump($_POST);
 // exit();
 
+
+// 送信データ受取り
+//更新update.phpのformは登録と同じくpostで各値を送信している
+// exit();
+$id = $_POST['id'];
+$user_name = $_POST['user_name'];
+$psw = $_POST['psw'];
+// var_dump($_POST['psw']);
+// exit(); OK!
+
 // 関数ファイルの読み込み
 //先に共通処理を読込んであげないといけない
 //requireではファイル読込に失敗した場合、エラーとしてその先の処理を停止する
 require 'common.php';
-
-// 送信データ受け取り
-//更新update.phpのformは登録と同じくpostで各値を送信している
-// var_dump($_FILES['img_file']);
-// exit();
-$id = $_POST['id'];
-// $img_file = $_FILES['img_file'];
-$title = $_POST['title'];
-$honbun = $_POST['honbun'];
-$hizuke = $_POST['hizuke'];
 
 // DB接続
 $pdo = connect_db();
 
 // UPDATE文を作成&実行
 //DBに入れるそれぞれの値をつなげる
-$sql = "UPDATE 06kadai_table SET title=:title, hizuke=:hizuke, honbun=:honbun, 
+$sql = "UPDATE users_table SET username=:user_name, password=:psw, 
 updated_at=sysdate() WHERE id=:id";
-// $sql = "UPDATE 06kadai_table SET img_file=:img_file, title=:title, hizuke=:hizuke, honbun=:honbun, 
-// updated_at=sysdate() WHERE id=:id";
+
 
 $stmt = $pdo->prepare($sql);
-//$stmt->bindValue(':img_file', $img_file, PDO::PARAM_STR); //値が文字列
-$stmt->bindValue(':title', $title, PDO::PARAM_STR); //値が文字列
-$stmt->bindValue(':hizuke', $hizuke, PDO::PARAM_STR); //値が文字列
-$stmt->bindValue(':honbun', $honbun, PDO::PARAM_STR); //値が文字列
+$stmt->bindValue(':user_name', $user_name, PDO::PARAM_STR); //値が文字列
+$stmt->bindValue(':psw', $psw, PDO::PARAM_STR); //値が文字列
 $stmt->bindValue(':id', $id, PDO::PARAM_INT); //値が数値
 $status = $stmt->execute();
 

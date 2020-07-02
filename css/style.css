@@ -225,3 +225,6 @@ button.btn {
     padding: 0 3%;
     letter-spacing: 0.5em;
 }
+td.options {
+    display: flex;
+}
