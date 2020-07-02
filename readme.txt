@@ -13,4 +13,4 @@ js/         ----jsファイル格納先
 
 
 ◇SQLデータ
-06kadai_table.sql
+users_table.sql
