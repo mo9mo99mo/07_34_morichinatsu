@@ -17,7 +17,7 @@
     <header>
         <h1>投稿画面</h1>
     </header>
-    <section>
+    <section id="form_block">
         <?php if (isset($error)) : ?>
             <p class="error"><?= h($error); ?></p>
         <?php endif; ?>
@@ -44,7 +44,7 @@
             </div>
             <div class="form_1colmun">
                 <div class="form_input">
-                    <input id="honbun" type="text" name="honbun" placeholder="コメント・説明を入力">
+                    <input id="honbun" type="text" name="honbun" placeholder="メモ・説明を入力">
                     <span id="honbun_error" class="error_msg"></span>
                 </div>
             </div>

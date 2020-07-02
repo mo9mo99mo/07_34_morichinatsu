@@ -2,23 +2,24 @@
 //データ送信されているかチェック
 // var_dump($_POST);
 // exit();
-
+//
 //本文を出力
 //var_dump($_POST['honbun']);
-
+//
 //受け取った画像ファイルの情報を出力
-// var_dump($_FILES);
-// echo $_FILES['img_file']['name']; //file name
-// echo $_FILES['img_file']['type']; //file type 拡張子
-// echo $_FILES['img_file']['size']; //file size
+//var_dump($_FILES);
+// echo $_FILES['img_file']['tmp_name']; //inputから送信された一時ファイル名
+// echo $_FILES['img_file']['name']; // file name 本来のファイル名
+// echo $_FILES['img_file']['type']; //file type ファイルの拡張子
+// echo $_FILES['img_file']['size']; //file size ファイルサイズ
 // echo $_FILES['img_file']['error']; //file error
-
+//
 // if ($_FILES['img_file']['name']) {
 //     //faile name
 //     echo $_FILES['img_file']['name'];
 // }
-
-
+//
+//
 //項目入力のチェック
 //値が存在しないor空で送信されてきた場合はNGにする
 // if (
@@ -28,7 +29,7 @@
 // ) {
 //     exit('ParamError：必須項目が入力されていない、もしくは空です');
 // }
-
+//
 // 受け取ったデータを変数に入れる
 // $img_file = $_FILES['img_file'];
 // $date = $_POST['date'];
@@ -51,17 +52,19 @@
 //     echo json_encode(["db error" => "{$e->getMessage()}"]); //getMessage SQLからエラー文を取出して表示
 //     exit();
 // }
-
+//
 // データ登録SQL作成
 // `updated_at`には実行時の`sysdate()`関数を用いて実行時の日時を入力
 //$sql = '';
-
+//
 // SQL準備&実行
 //$sql = 'INSERT INTO 06kadai_table(id, title, date, img_file, honbun, updated_at) VALUES(NULL, :title, :date, :img_file, :honbun, sysdate())';
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
 
 //共通関数の読込
+//requireの呼び出しではファイル読込に失敗した場合はエラーでその先の処理を停止する
+
 require 'common.php';
 
 //画像をuploadsフォルダへアップロード
@@ -97,7 +100,7 @@ function file_upload()
 
     // ファイル拡張子をチェック
     $finfo = finfo_open(FILEINFO_MIME_TYPE);
-    $mimetype = finfo_file($finfo, $tmp_name);
+    $mimetype = finfo_file($finfo, $tmp_name); //ファイルについての情報を返す
 
     // 許可するMIMETYPE
     $allowed_types = [
@@ -107,7 +110,8 @@ function file_upload()
         throw new Exception('許可されていない拡張子のファイルです。');
     }
 
-    // ファイル名（ハッシュ値でファイル名を決定するため、同一ファイルは同盟で上書きされる）
+    // アップロード後のファイル名の処理
+    //（ハッシュ値でファイル名を決定するため、同一ファイルは同名で上書きされる）
     $filename = sha1_file($tmp_name);
 
     // 拡張子
@@ -151,31 +155,3 @@ try {
 } catch (Exception $e) {
     $error = $e->getMessage();
 }
-
-//DBに直接画像を保存するため却下
-// if ($_SERVER['REQUEST_METHOD'] != 'POST') {
-// // 画像を取得
-
-// } else {
-// // 画像を保存
-// if (!empty($_FILES['image']['name'])) {
-// $name = $_FILES['image']['name'];
-// $type = $_FILES['image']['type'];
-// $content = file_get_contents($_FILES['image']['tmp_name']);
-// $size = $_FILES['image']['size'];
-
-// $sql = 'INSERT INTO images(image_name, image_type, image_content, image_size, created_at)
-// VALUES (:image_name, :image_type, :image_content, :image_size, now())';
-// $stmt = $pdo->prepare($sql);
-// $stmt->bindValue(':image_name', $name, PDO::PARAM_STR);
-// $stmt->bindValue(':image_type', $type, PDO::PARAM_STR);
-// $stmt->bindValue(':image_content', $content, PDO::PARAM_STR);
-// $stmt->bindValue(':image_size', $size, PDO::PARAM_INT);
-// $stmt->execute();
-// }
-// unset($pdo);
-// header('Location:list.php');
-// exit();
-// }
-
-// unset($pdo);
