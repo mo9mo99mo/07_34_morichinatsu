@@ -14,3 +14,8 @@ js/         ----jsファイル格納先
 
 ◇SQLデータ
 users_table.sql
+
+※課題：1について※
+前回提出のgit-hubの方を更新しています
+お手数ですがそちらで確認をお願いします
+https://github.com/mo9mo99mo/06_34_morichinatsu
