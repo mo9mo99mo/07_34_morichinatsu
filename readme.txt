@@ -5,6 +5,10 @@ select.php   ---DBに登録されたデータを一覧表示（管理者用）
 edit.php     ---DBに登録されたデータを更新変更するページ（管理者用）
 update.php   ---edit.phpで変更した内容にDBを更新処理するページ
 delete.php   ---DBに登録したデータを削除処理するページ
+complete.php ---会員登録完了ページ
+login.php    ---会員ログインページ
+login_insert.php  会員ログイン処理ページ
+member.php    ---ログイン完了ページ
 
 
 ◇ディレクトリ

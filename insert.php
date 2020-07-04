@@ -45,6 +45,6 @@ if ($status == false) {
     exit();
 } else {
     // 正常に実行された場合は一覧ページファイルに移動，処理を実行する 
-    header("Location:index.php");
+    header("Location:complete.php");
     exit();
 }

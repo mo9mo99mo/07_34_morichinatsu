@@ -13,10 +13,10 @@
 
 <body>
     <header>
-        <h1>ユーザー登録画面</h1>
+        <h1>会員ログイン</h1>
     </header>
     <section id="form_block">
-        <form action="insert.php" method="post" onsubmit="return chk(this)" id="form">
+        <form action="login_insert.php" method="post" onsubmit="return chk(this)" id="form">
             <div class="form_1colmun">
                 <div class="form_input">
                     <input type="text" name="user_name" id="user_name" placeholder="ユーザーネーム">
@@ -30,12 +30,12 @@
                 </div>
             </div>
             <div class="form_btn">
-                <button id="post" type="submit" name="entry" class="btn" value="新規会員登録">新規会員登録</button>
+                <button id="post" type="submit" name="login" class="btn" value="ログイン">ログイン</button>
             </div>
         </form>
     </section>
     <footer>
-        <a href="login.php" class="btn">会員ページにログイン</a>
+        <a href="index.php" class="btn">会員登録はこちら</a>
     </footer>
 </body>
 
